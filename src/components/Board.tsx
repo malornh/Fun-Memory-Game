@@ -4,6 +4,7 @@ import Confetti from "react-confetti";
 import { useWindowSize } from 'react-use';
 import ringer from "/assets/flipdish-ringer.mp3"; 
 import matchSound from "/assets/match-sound.mp3"; 
+import startSound from "/assets/start-sound.mp3"; 
 import './Board.css';
 
 const Board = () => {
@@ -85,6 +86,20 @@ const Board = () => {
     };
   }, [isGameWon]); 
 
+  useEffect(() => {
+    const startAudio = new Audio(startSound);
+
+    // Start the sound after a 2-second delay
+    const startTimeout = setTimeout(() => {
+      startAudio.play();
+    }, 2000); // 2000ms = 2 seconds
+
+    return () => {
+      clearTimeout(startTimeout);  // Clear the timeout when the component unmounts
+      startAudio.pause();  // Stop the audio if the component is unmounted
+    };
+  }, []);  // Empty dependency array, runs once when the component mounts
+
   return (
     <div className="container">
       {cardArray.map((element, index) => (
@@ -100,7 +115,7 @@ const Board = () => {
         <div className="confetti">
             <Confetti width={width} height={height-10} />
         </div>
-        }
+      }
     </div>
   );
 };
