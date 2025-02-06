@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Card from "./Card";
 import Confetti from "react-confetti"; 
 import { useWindowSize } from 'react-use';
