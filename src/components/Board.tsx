@@ -3,6 +3,7 @@ import Card from "./Card";
 import Confetti from "react-confetti"; 
 import { useWindowSize } from 'react-use';
 import ringer from "/assets/flipdish-ringer.mp3"; 
+import matchSound from "/assets/match-sound.mp3"; 
 import './Board.css';
 
 const Board = () => {
@@ -11,6 +12,7 @@ const Board = () => {
   const [selectedCards, setSelectedCards] = useState<number[]>([]); 
   const { width, height } = useWindowSize(); 
   const [isGameWon, setIsGameWon] = useState(false); 
+  const match = new Audio(matchSound); 
 
   useEffect(() => {
     const array: number[] = [];
@@ -45,6 +47,7 @@ const Board = () => {
 
       if (cardArray[firstCardIndex] === cardArray[secondCardIndex]) {
         setSelectedCards([]); 
+        match.play();
       } else {
         setTimeout(() => {
           setFlippedCards((prev) => {

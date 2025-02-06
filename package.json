@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^3.7.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@vercel/analytics": "^1.4.1",
     "framer-motion": "^12.3.1",
     "react": "^19.0.0",
     "react-confetti": "^6.2.2",
