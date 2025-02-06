@@ -1,0 +1,75 @@
+/* Card container styling */
+.card-container {
+    height: 20vh;
+    width: 10vw;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Adds 3D effect for the flip */
+    display: flex; /* Center the card */
+    cursor: pointer; /* Adds a pointer cursor when hovering over the card */
+  }
+  
+  /* Card container for the flip effect */
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s; /* Smooth transition when flipping */
+  }
+  
+  /* Front of the card */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the backface during flip */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  /* Front side of the card (card back image) */
+  .card-front {
+    background-color: #f1f1f1; /* Optional, set a color or background for the front */
+    border: solid 2px rgb(9, 9, 9); /* Optional border */
+  }
+  
+  /* Back side of the card (actual image) */
+  .card-back {
+    transform: rotateY(180deg); /* Rotate the back side 180 degrees */
+  }
+  
+  /* Flip effect */
+  .card.flipped {
+    transform: rotateY(180deg); /* Flip the card */
+  }
+  
+  /* Image styling */
+  .image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Media query for small screen sizes */
+  @media (max-width: 600px) {
+    .card-container {
+      height: 10vh;
+      width: 20vw;
+    }
+  
+    .image {
+      width: 12vh;
+      height: 18vw;
+    }
+  }
+
+.image {
+    -webkit-user-drag: none; /* For Safari */
+    user-drag: none; /* For other browsers */
+  }
+  
